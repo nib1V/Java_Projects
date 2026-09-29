@@ -2,7 +2,11 @@ import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.io.PrintWriter;
-
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.QuadCurve2D;
 
 public class DrawDelta {
 
@@ -26,7 +30,7 @@ public class DrawDelta {
                 MakeDFile(L);
                 break;
             case "g":
-
+                drawDgraphics(L);
                 break;
             default:
                 System.out.println("Incorrect argument given!");
@@ -138,5 +142,17 @@ public class DrawDelta {
             System.out.println("Πρόβλημα: "+e);
         }
 
+    }
+
+    static void drawDgraphics(int size) {
+        Frame f = new Frame("Drawing Delta") {
+            public void paint (Graphics g) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.draw(new Line2D.Double(50, 300, 200, 50));
+
+            }
+        };
+        f.setSize(400,400);
+        f.setVisible(true);
     }
 }
