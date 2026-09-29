@@ -1,4 +1,8 @@
+import java.awt.Font;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.io.PrintWriter;
+
 
 public class DrawDelta {
 
@@ -19,7 +23,7 @@ public class DrawDelta {
                 DrawWindow(L);
                 break;
             case "f":
-
+                MakeDFile(L);
                 break;
             case "g":
 
@@ -71,6 +75,7 @@ public class DrawDelta {
     public static void DrawWindow(int size){
         String Triangle = "";
         Triangle = FillTriangle(size, Triangle);
+        UIManager.put("OptionPane.messageFont", new Font("Monospaced", Font.BOLD, 24));
         JOptionPane.showMessageDialog(null,
                 Triangle,
                 "Παράθυρο Εξόδου",
@@ -98,7 +103,7 @@ public class DrawDelta {
             temp--;
             if (i == 1)
             {
-                Array += "*";
+                Array += "*\n";
                 continue;
             }
             else
@@ -111,11 +116,27 @@ public class DrawDelta {
                 j = 1;
                 for (; j < revspace * 2; j++)
                     Array += " ";
-                Array += "*";
+                Array += "*\n";
             }
         }
-        System.out.print(Array);
-        System.exit(0);
         return Array;
+    }
+
+    public static void MakeDFile(int size){
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter("C:\\Users\\User\\Desktop\\D.html", "UTF-8");
+            writer.println("<!DOCTYPE html>");
+            writer.println("<html>");
+            writer.println("<head>");
+            writer.println("<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"/>");
+            writer.println("</head>");
+            writer.println("<body><font size=" + size + ">Δ with font size = " + size + "</font></body>");
+            writer.println("</html>");
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Πρόβλημα: "+e);
+        }
+
     }
 }
