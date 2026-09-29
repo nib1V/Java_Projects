@@ -60,7 +60,6 @@ public class DrawDelta {
                         System.out.println("Error: Out of Range!");
                         System.exit(0);
                     }
-                    input.close();
                 }
                 catch(Exception e)
                 {
