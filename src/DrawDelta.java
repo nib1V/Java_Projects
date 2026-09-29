@@ -1,4 +1,6 @@
 import java.awt.Font;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.io.PrintWriter;
@@ -82,7 +84,7 @@ public class DrawDelta {
         UIManager.put("OptionPane.messageFont", new Font("Monospaced", Font.BOLD, 24));
         JOptionPane.showMessageDialog(null,
                 Triangle,
-                "Παράθυρο Εξόδου",
+                "Output Window",
                 JOptionPane.INFORMATION_MESSAGE);
 
     }
@@ -129,7 +131,7 @@ public class DrawDelta {
     public static void MakeDFile(int size){
         PrintWriter writer;
         try {
-            writer = new PrintWriter("C:\\Users\\User\\Desktop\\D.html", "UTF-8");
+            writer = new PrintWriter("C:\\Users\\XamZer0\\Desktop\\D.html", "UTF-8");
             writer.println("<!DOCTYPE html>");
             writer.println("<html>");
             writer.println("<head>");
@@ -139,20 +141,22 @@ public class DrawDelta {
             writer.println("</html>");
             writer.close();
         } catch (Exception e) {
-            System.out.println("Πρόβλημα: "+e);
+            System.out.println("Error: "+e);
         }
 
     }
 
     static void drawDgraphics(int size) {
+        int base = (size*2 - 1)/2;
         Frame f = new Frame("Drawing Delta") {
             public void paint (Graphics g) {
                 Graphics2D g2 = (Graphics2D) g;
-                g2.draw(new Line2D.Double(50, 300, 200, 50));
-
+                g2.draw(new Line2D.Double(320 - base*10, 210 + size*5, 320 + base*10, 210 + size*5));
+                g2.draw(new Line2D.Double(320 - base*10, 210 + size*5, 320, 210 - size*5));
+                g2.draw(new Line2D.Double(320, 210 - size*5, 320 + base*10, 210 + size*5));
             }
         };
-        f.setSize(400,400);
+        f.setSize(640,420);
         f.setVisible(true);
     }
 }
