@@ -1,43 +1,88 @@
 import java.awt.Font;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
-import java.awt.geom.QuadCurve2D;
 
 public class DrawDelta {
 
     public static void main(String[] args) {
         //Variables used to store the arguments given from the console
         String M = args[0];
+        boolean flag = true;
+        boolean con = true;
         int L = Integer.parseInt(args[1]);
         if (L < 3 || L > 20)
         {
             System.out.println("Error: Out of Range!");
             System.exit(0);
         }
-        switch(M){
-            case "c":
-                DrawConsole(L);
-                break;
-            case "w":
-                DrawWindow(L);
-                break;
-            case "f":
-                MakeDFile(L);
-                break;
-            case "g":
-                drawDgraphics(L);
-                break;
-            default:
-                System.out.println("Incorrect argument given!");
-                System.exit(0);
+        while(con)
+        {
+            switch(M){
+                case "c":
+                    DrawConsole(L);
+                    break;
+                case "w":
+                    DrawWindow(L);
+                    break;
+                case "f":
+                    MakeDFile(L);
+                    break;
+                case "g":
+                    con = false;
+                    continue;
+                default:
+                    System.out.println("Incorrect argument given!");
+                    System.exit(0);
+            }
+            args[1] = "" + (L-1);
+            if (L - 1  < 3)
+            {
+                flag = false;
+            }
+
+            if (flag)
+                main(args);
+
+            if(M.equals("c") || M.equals("f"))
+            {
+                try {
+                    System.out.print("Give a new value for L: ");
+                    Scanner input = new Scanner(System.in);
+                    L = input.nextInt();
+                    if (L < 3 || L > 20)
+                    {
+                        System.out.println("Error: Out of Range!");
+                        System.exit(0);
+                    }
+                    input.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error: Wrong Input!");
+                    System.exit(0);
+                }
+            }
+            else
+            {
+                L = Integer.parseInt(JOptionPane.showInputDialog(
+                    "Give me a number ",3));
+                if (L < 3 || L > 20)
+                {
+                    JOptionPane.showMessageDialog(null,
+                            "Error: Out of Range",
+                            "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                    System.exit(0);
+                }
+            }
         }
+        drawDgraphics(L);
     }
 
     public static void DrawConsole(int size){
@@ -86,7 +131,7 @@ public class DrawDelta {
                 Triangle,
                 "Output Window",
                 JOptionPane.INFORMATION_MESSAGE);
-
+        
     }
 
     public static String FillTriangle(int size, String Array){
@@ -142,6 +187,7 @@ public class DrawDelta {
             writer.close();
         } catch (Exception e) {
             System.out.println("Error: "+e);
+            System.exit(0);
         }
 
     }
