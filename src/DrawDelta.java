@@ -7,6 +7,8 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class DrawDelta {
 
@@ -175,7 +177,7 @@ public class DrawDelta {
     public static void MakeDFile(int size){
         PrintWriter writer;
         try {
-            writer = new PrintWriter("C:\\Users\\XamZer0\\Desktop\\D.html", "UTF-8");
+            writer = new PrintWriter("C:\\Users\\User\\D.html", "UTF-8");
             writer.println("<!DOCTYPE html>");
             writer.println("<html>");
             writer.println("<head>");
@@ -201,6 +203,14 @@ public class DrawDelta {
                 g2.draw(new Line2D.Double(320, 210 - size*5, 320 + base*10, 210 + size*5));
             }
         };
+
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+            System.exit(0); // Closes the application
+        }
+        });
+
         f.setSize(640,420);
         f.setVisible(true);
     }
