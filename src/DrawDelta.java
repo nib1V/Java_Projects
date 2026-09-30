@@ -23,6 +23,9 @@ public class DrawDelta {
             System.out.println("Error: Out of Range!");
             System.exit(0);
         }
+        //Opening System.in to take the input from the console later on
+        //This is done here since the input is going to be used during the while loop
+        Scanner input = new Scanner(System.in);
         while(con)
         {
             switch(M){
@@ -42,22 +45,21 @@ public class DrawDelta {
                     System.out.println("Incorrect argument given!");
                     System.exit(0);
             }
-            args[1] = "" + (L-1);
+            args[1] = "" + (L-1);       //Updating L in order to call main recursivly or ask for a new L
             if (L - 1  < 3)
             {
                 flag = false;
             }
 
             if (flag)
-                main(args);
+                main(args);             //Calling Main
 
-            if(M.equals("c") || M.equals("f"))
-            {
+            if(M.equals("c") || M.equals("f"))          //If the Mode is for the console or a file
+            {                                                              //Initiate the proccess of taking a new value for L
                 try {
                     System.out.print("Give a new value for L: ");
-                    Scanner input = new Scanner(System.in);
                     L = input.nextInt();
-                    if (L < 3 || L > 20)
+                    if (L < 3 || L > 20)                                   //Range checking
                     {
                         System.out.println("Error: Out of Range!");
                         System.exit(0);
@@ -69,11 +71,11 @@ public class DrawDelta {
                     System.exit(0);
                 }
             }
-            else
-            {
+            else                                                           //if the Mode is for the window
+            {                                                              //Give a dialog box to the user instead of the console output
                 L = Integer.parseInt(JOptionPane.showInputDialog(
                     "Give me a number ",3));
-                if (L < 3 || L > 20)
+                if (L < 3 || L > 20)                                            //Range Checking with Error Popup if out of range
                 {
                     JOptionPane.showMessageDialog(null,
                             "Error: Out of Range",
@@ -83,10 +85,11 @@ public class DrawDelta {
                 }
             }
         }
-        drawDgraphics(L);
+        input.close();                                                     //Closing the input in order to prevent data leaks
+        drawDgraphics(L);                                                  //Calling drawDgraphics if the Mode is for the graphical enviroment
     }
 
-    public static void DrawConsole(int size){
+    public static void DrawConsole(int size){                               //Method that Draws the Letter Delta in the console
         int temp = size;
         for(int i = 1; i <= size; i++)
         {
@@ -113,7 +116,7 @@ public class DrawDelta {
             {
                 System.out.print("*");
             }
-            int revspace = size - j;
+            int revspace = size - j;                                    //Used to calculate the space needed to reach the other star (ReverseSpace)
             if (i >= 2)
             {
                 j = 1;
@@ -124,10 +127,10 @@ public class DrawDelta {
         }
     }
 
-    public static void DrawWindow(int size){
+    public static void DrawWindow(int size){                            //Method that Draws a Window with the Letter Delta
         String Triangle = "";
         Triangle = FillTriangle(size, Triangle);
-        UIManager.put("OptionPane.messageFont", new Font("Monospaced", Font.BOLD, 24));
+        UIManager.put("OptionPane.messageFont", new Font("Monospaced", Font.BOLD, 24));         //Changed the font to make the output look more like a delta
         JOptionPane.showMessageDialog(null,
                 Triangle,
                 "Output Window",
@@ -135,8 +138,8 @@ public class DrawDelta {
         
     }
 
-    public static String FillTriangle(int size, String Array){
-        int temp = size;
+    public static String FillTriangle(int size, String Array){          //Method used to Fill a string with the correct characters so that the output
+        int temp = size;                                                //Used by the DrawWindow method is going to be dispayed as the content of the window
         for(int i = 1; i <= size; i++)
         {
             if (i == size)                  //The Base
@@ -174,7 +177,7 @@ public class DrawDelta {
         return Array;
     }
 
-    public static void MakeDFile(int size){
+    public static void MakeDFile(int size){                           //Method that makes an HTML file containing the Greek Letter Delta in UTF-8 encoding
         PrintWriter writer;
         try {
             writer = new PrintWriter("C:\\Users\\User\\D.html", "UTF-8");
@@ -193,7 +196,7 @@ public class DrawDelta {
 
     }
 
-    static void drawDgraphics(int size) {
+    static void drawDgraphics(int size) {                           //Method that makes a Frame and Draws 3 Lines on it in order to display a Delta
         int base = (size*2 - 1)/2;
         Frame f = new Frame("Drawing Delta") {
             public void paint (Graphics g) {
@@ -204,10 +207,9 @@ public class DrawDelta {
             }
         };
 
-        f.addWindowListener(new WindowAdapter() {
-            @Override
+        f.addWindowListener(new WindowAdapter() {                   //The windowlistener here is used in order to be able to close the frame
             public void windowClosing(WindowEvent e) {
-            System.exit(0); // Closes the application
+            System.exit(0);
         }
         });
 
