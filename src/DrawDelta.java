@@ -45,7 +45,7 @@ public class DrawDelta {
                     System.out.println("Incorrect argument given!");
                     System.exit(0);
             }
-            args[1] = "" + (L-1);       //Updating L in order to call main recursivly or ask for a new L
+            args[1] = "" + (L-1);       //Updating L in order to call main recursively or ask for a new L
             if (L - 1  < 3)
             {
                 flag = false;
@@ -55,7 +55,7 @@ public class DrawDelta {
                 main(args);             //Calling Main
 
             if(M.equals("c") || M.equals("f"))          //If the Mode is for the console or a file
-            {                                                              //Initiate the proccess of taking a new value for L
+            {                                                              //Initiate the process of taking a new value for L
                 try {
                     System.out.print("Give a new value for L: ");
                     L = input.nextInt();
@@ -86,7 +86,7 @@ public class DrawDelta {
             }
         }
         input.close();                                                     //Closing the input in order to prevent data leaks
-        drawDgraphics(L);                                                  //Calling drawDgraphics if the Mode is for the graphical enviroment
+        drawDgraphics(L);                                                  //Calling drawDgraphics if the Mode is for the graphical environment
     }
 
     public static void DrawConsole(int size){                               //Method that Draws the Letter Delta in the console
@@ -139,7 +139,7 @@ public class DrawDelta {
     }
 
     public static String FillTriangle(int size, String Array){          //Method used to Fill a string with the correct characters so that the output
-        int temp = size;                                                //Used by the DrawWindow method is going to be dispayed as the content of the window
+        int temp = size;                                                //Used by the DrawWindow method is going to be displayed as the content of the window
         for(int i = 1; i <= size; i++)
         {
             if (i == size)                  //The Base
