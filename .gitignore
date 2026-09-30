@@ -30,3 +30,4 @@ bin/
 .DS_Store
 src/DrawDelta.class
 src/DrawDelta$1.class
+src/DrawDelta$2.class
