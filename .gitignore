@@ -28,7 +28,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-src/DrawDelta.class
-src/DrawDelta$1.class
-src/DrawDelta$2.class
-src/PalindromikesFraseis.class
+/src/Delta/DrawDelta$1.class
+/src/Delta/DrawDelta$2.class
+/src/Delta/DrawDelta.class
+/src/Palindromes/PalindromikesFraseis.class
