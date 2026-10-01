@@ -1,3 +1,5 @@
+package Palindromes;
+
 import java.util.Scanner;
 
 public class PalindromikesFraseis {
