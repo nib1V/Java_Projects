@@ -41,7 +41,7 @@ public class DrawDelta {
                     MakeDFile(L);
                     break;
                 case "g":
-                    con = false;
+                    con = false;        //Calling outside because otherwise, if inside loop it infinitely loads new windows and causes crash to happen
                     continue;
                 default:
                     System.out.println("Incorrect argument given!");

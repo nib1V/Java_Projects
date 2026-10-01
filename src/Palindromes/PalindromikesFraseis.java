@@ -1,5 +1,7 @@
 package Palindromes;
 
+import java.text.Normalizer;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class PalindromikesFraseis {
@@ -15,17 +17,17 @@ public class PalindromikesFraseis {
         boolean answer = isPalindromikiFrash(nextLine);
         //Stopping counter and calculating total time
         long time2 = System.nanoTime();
-        long totaltime = (time2 - time1)/1000000000;
+        long totaltime = (time2 - time1);
 
         if (answer)
         {
             System.out.println("The String you gave was a Palindrome!\n" +
-                                "This comparison took: " + totaltime + " seconds.");
+                                "This comparison took: " + (double)totaltime/1000000000 + " seconds.");
         }
         else
         {
             System.out.println("The String you gave was not a Palindrome!\n" +
-                                "This comparison took: " + totaltime + " seconds.");
+                                "This comparison took: " + (double)totaltime/1000000000 + " seconds.");
         }
         //Closing the input in order to prevent data leaks 
         in.close();
@@ -33,13 +35,34 @@ public class PalindromikesFraseis {
 
     static boolean isPalindromikiFrash(String s)        //Method that takes a String and determines if it is a palindrome
     {
-        //int length = s.length();
-        //char[] PalArray;
-        //for(int i = 0; i < length; i++)
-        //{   
-        //    PalArray[i] = s.charAt(i);
-        //}
-        return true;//false/true
+        s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+","");
+        s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{Punct}", "");
+        s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\s+", "");
+        s = s.toLowerCase();
+
+        int length = s.length();
+        char[] PalArray = new char[length];
+        char[] RevArray = new char[length];
+        //Copying in Normal Order
+        for(int i = 0; i < length; i++)
+            PalArray[i] = s.charAt(i);
+        //Copying in Reverse Order
+        int k = 0;
+        for(int i = length - 1; i >= 0; i--) {
+            RevArray[k] = s.charAt(i);
+            k++;
+        }
+
+        boolean flag = true;
+        for(int i = 0; i < length; i++)
+        {
+            if(PalArray[i] != RevArray[i])
+            {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
 }
