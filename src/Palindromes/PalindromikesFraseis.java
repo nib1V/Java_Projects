@@ -40,12 +40,11 @@ public class PalindromikesFraseis {
         s = s.toLowerCase();
 
         int length = s.length();
-        char[] PalArray = new char[length];
-        char[] RevArray = new char[length];
         //Copying in Normal Order
-        for(int i = 0; i < length; i++)
-            PalArray[i] = s.charAt(i);
+        char[] PalArray = s.toCharArray();
+
         //Copying in Reverse Order
+        char[] RevArray = new char[length];
         int k = 0;
         for(int i = length - 1; i >= 0; i--) {
             RevArray[k] = s.charAt(i);
@@ -64,4 +63,8 @@ public class PalindromikesFraseis {
         return flag;
     }
 
+    static void PalindromikesLexikou()
+    {
+
+    }
 }

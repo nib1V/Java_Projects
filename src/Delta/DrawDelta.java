@@ -91,7 +91,7 @@ public class DrawDelta {
         drawDgraphics(L);                                                  //Calling drawDgraphics if the Mode is for the graphical environment
     }
 
-    public static void DrawConsole(int size){                               //Method that Draws the Letter Delta in the console
+    static void DrawConsole(int size){                               //Method that Draws the Letter Delta in the console
         int temp = size;
         for(int i = 1; i <= size; i++)
         {
@@ -129,7 +129,7 @@ public class DrawDelta {
         }
     }
 
-    public static void DrawWindow(int size){                            //Method that Draws a Window with the Letter Delta
+    static void DrawWindow(int size){                            //Method that Draws a Window with the Letter Delta
         String Triangle = "";
         Triangle = FillTriangle(size, Triangle);
         UIManager.put("OptionPane.messageFont", new Font("Monospaced", Font.BOLD, 24));         //Changed the font to make the output look more like a delta
@@ -140,7 +140,7 @@ public class DrawDelta {
 
     }
 
-    public static String FillTriangle(int size, String Array){          //Method used to Fill a string with the correct characters so that the output
+    static String FillTriangle(int size, String Array){          //Method used to Fill a string with the correct characters so that the output
         int temp = size;                                                //Used by the DrawWindow method is going to be displayed as the content of the window
         for(int i = 1; i <= size; i++)
         {
@@ -179,7 +179,7 @@ public class DrawDelta {
         return Array;
     }
 
-    public static void MakeDFile(int size){                           //Method that makes an HTML file containing the Greek Letter Delta in UTF-8 encoding
+    static void MakeDFile(int size){                           //Method that makes an HTML file containing the Greek Letter Delta in UTF-8 encoding
         PrintWriter writer;
         try {
             writer = new PrintWriter("C:\\Users\\XamZer0\\D.html", "UTF-8");
