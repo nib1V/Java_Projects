@@ -137,7 +137,7 @@ public class DrawDelta {
                 Triangle,
                 "Output Window",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
 
     public static String FillTriangle(int size, String Array){          //Method used to Fill a string with the correct characters so that the output
@@ -182,14 +182,12 @@ public class DrawDelta {
     public static void MakeDFile(int size){                           //Method that makes an HTML file containing the Greek Letter Delta in UTF-8 encoding
         PrintWriter writer;
         try {
-            writer = new PrintWriter("C:\\Users\\User\\D.html", "UTF-8");
-            writer.println("<!DOCTYPE html>");
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"/>");
-            writer.println("</head>");
-            writer.println("<body><font size=" + size + ">Δ with font size = " + size + "</font></body>");
-            writer.println("</html>");
+            writer = new PrintWriter("C:\\Users\\XamZer0\\D.html", "UTF-8");
+            writer.println("<!DOCTYPE html>\n<html>\n<head>\n" +
+                    "<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"/>\n" +
+                    "</head>\n" +
+                    "<body><font size=" + size + ">Δ with font size = " + size + "</font></body>\n" +
+                    "</html>\n");
             writer.close();
         } catch (Exception e) {
             System.out.println("Error: "+e);
