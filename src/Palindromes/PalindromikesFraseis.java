@@ -5,10 +5,16 @@ import java.io.IOException;
 import java.text.Normalizer;
 import java.util.Scanner;
 import java.util.Vector;
+import org.jfugue.Player;
 
 public class PalindromikesFraseis {
     public static void main(String[] args)
     {
+        //Testing Notes
+        Player p = new Player();
+        p.play("F");
+        System.exit(0);
+
         //To test the method
         PalindromikesLexikou();
         System.exit(0);
