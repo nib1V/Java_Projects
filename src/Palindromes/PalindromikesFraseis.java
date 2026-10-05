@@ -1,11 +1,18 @@
 package Palindromes;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.Normalizer;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class PalindromikesFraseis {
     public static void main(String[] args)
     {
+        //To test the method
+        PalindromikesLexikou();
+        System.exit(0);
+
         System.out.print("Give me a String: ");
         //Taking Input from the User
         Scanner in = new Scanner(System.in);
@@ -39,32 +46,63 @@ public class PalindromikesFraseis {
         s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\s+", "");
         s = s.toLowerCase();
 
-        int length = s.length();
-        //Copying in Normal Order
-        char[] PalArray = s.toCharArray();
-
         //Copying in Reverse Order
-        char[] RevArray = new char[length];
-        int k = 0;
-        for(int i = length - 1; i >= 0; i--) {
-            RevArray[k] = s.charAt(i);
-            k++;
-        }
+        String RevArray = new StringBuffer(s).reverse().toString();
 
-        boolean flag = true;
-        for(int i = 0; i < length; i++)
-        {
-            if(PalArray[i] != RevArray[i])
-            {
-                flag = false;
-                break;
-            }
-        }
-        return flag;
+        return s.equals(RevArray);
     }
 
     static void PalindromikesLexikou()
     {
+        try {
+            long start = System.nanoTime();
+            FileInputStream finput = new FileInputStream("C:/Users/User/Desktop/Java_Projects/src/Palindromes/Resources/gr.dic");
+            Scanner reader = new Scanner(finput);
 
+            Vector<String> arr = new Vector<>();
+            int count1 = 0, count2 = 0, sum = 0;
+            while(reader.hasNextLine())
+            {
+                //Finding average word size
+                String word = reader.nextLine();
+                sum += word.length();
+
+                //Finding the amount of palindromes in gr.dic
+                boolean answer = isPalindromikiFrash(word);
+                if (answer)
+                {
+                    count2++;
+                    arr.add(word);
+                }
+                //Finding the total amount of words in gr.dic
+                count1++;
+            }
+            sum /= count1;
+            System.out.println("There is a total of: " + count1 + " words in gr.dic");
+            System.out.println("The average size of a word in gr.dic is: " + sum);
+            System.out.println("There are: " + count2 + " Palindromes");
+            System.out.println("These are:");
+
+            for (String cur : arr)
+                System.out.println(" - " + cur);
+
+            float percent = (float) count2/count1;
+            System.out.println("That represents " + percent*100 + "% of the words in gr.dic");
+            System.out.println();
+
+            System.out.println("The Palindromes in reverse order:");
+            for (int i = arr.size() - 1; i >= 0; i--)
+                System.out.print(arr.get(i) + " ");
+            System.out.println();
+
+            long end = System.nanoTime();
+            long time = end - start;
+            System.out.println();
+            System.out.println("This operation took: " + (double)time/1000000000 + " seconds.");
+
+            reader.close();
+        } catch(IOException e) {
+            System.out.println(e);
+        }
     }
 }
