@@ -6,7 +6,6 @@ import java.text.Normalizer;
 import java.util.Scanner;
 import java.util.Vector;
 import org.jfugue.Player;
-import org.jfugue.Tempo;
 
 public class PalindromikesFraseis {
     public static void main(String[] args)
@@ -123,9 +122,12 @@ public class PalindromikesFraseis {
 
                 String MusicString = "T[200] ";         //Giving a Fast tempo because otherwise it's too slow
                 for(char c : temp)
-                    MusicString += "[" + Letters.GetScore(c) + "]i "; //Creating the MusicString
+                    MusicString += "[" + Letters.GetScore(c) + "]q "; //Creating the MusicString
 
-                System.out.println("Now Playing Word: " + cur);     //Printing the word you are currently
+                long endcur = System.nanoTime();
+                long curtime = endcur - start;
+                System.out.println("Now Playing Word: " + cur +
+                        " ------ " + (double)curtime/1000000000 + " seconds");     //Printing the word you are currently
                 System.out.println();                               //Listening to
                 p.play(MusicString);
             }
