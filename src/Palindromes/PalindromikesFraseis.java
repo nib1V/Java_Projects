@@ -158,7 +158,7 @@ class MusicScore {
     static char[] symbols = null;
     static int[] scores = null;
 
-    static int GetScore(char symbol)
+    int GetScore(char symbol)
     {
         int index = 0;
         for(int i = 0; i < symbols.length; i++)
@@ -172,7 +172,7 @@ class MusicScore {
         return scores[index];
     }
 
-    static void SymbolScore(char symbol, int score)
+    void SymbolScore(char symbol, int score)
     {
         for(int i = 0; i < symbols.length; i++)
         {
