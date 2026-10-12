@@ -1,5 +1,13 @@
 package Sudoku;
 
+/*
+ * The Code provided for the Backtracking Algorithm
+ * is provided from: is from: https://www.baeldung.com/java-sudoku
+ * and used to solve the sudoku puzzle.
+ * I have added a few methods to check the input
+ * and the solvability of the sudoku board
+ */
+
 public class BacktrackingAlgorithm {
 
     private static final int BOARD_SIZE = 9;
