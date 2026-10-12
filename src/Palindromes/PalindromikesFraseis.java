@@ -10,10 +10,10 @@ import org.jfugue.Player;
 public class PalindromikesFraseis {
     public static void main(String[] args)
     {
-        //To test the method
         PalindromikesLexikou();
         System.exit(0);
-
+        //Other use case scenario
+        /*
         System.out.print("Give me a String: ");
         //Taking Input from the User
         Scanner in = new Scanner(System.in);
@@ -38,6 +38,7 @@ public class PalindromikesFraseis {
         }
         //Closing the input in order to prevent data leaks 
         in.close();
+         */
     }
 
     static boolean isPalindromikiFrash(String s)        //Method that takes a String and determines if it is a palindrome
@@ -58,7 +59,7 @@ public class PalindromikesFraseis {
         try
         {
             long start = System.nanoTime();
-            FileInputStream finput = new FileInputStream("C:/Users/XamZer0/Desktop/Java_Projects/src/Palindromes/Resources/gr.dic");
+            FileInputStream finput = new FileInputStream("C:/Users/User/Desktop/Java_Projects/src/Palindromes/Resources/gr.dic");
             Scanner reader = new Scanner(finput);
 
             Vector<String> arr = new Vector<>();
