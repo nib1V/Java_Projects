@@ -9,6 +9,7 @@ package Sudoku;
  */
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class BacktrackingAlgorithm {
 
@@ -33,25 +34,50 @@ public class BacktrackingAlgorithm {
     };
 
     public static void main(String[] args) {
-        //Testing!
-        int[][] brd;
-        brd = EmptyBoard(45);
-        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
-            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-                System.out.print(brd[row][column] + " ");
-            }
-            System.out.println();
-        }
-        boolean f = isValidBoard(board);
-        System.out.println(f);
-        System.exit(0);
+        System.out.print("Enter the number of Boards you want to test: ");
+        Scanner scanner = new Scanner(System.in);
+        int value = scanner.nextInt();
 
-        BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
-        solver.solve(board);
-        solver.printBoard();
+        BacktrackingAlgorithm sudoku = new BacktrackingAlgorithm();
+        sudoku.Creator(value);
     }
 
-    static boolean isValidBoard(int[][] brd){
+
+    public void Creator(int n){
+        long start = System.currentTimeMillis();
+        int ValCreated = 0;
+        int InvCreated = 0;
+        int EmptyCells = 0;
+
+        System.out.println("For N = " + n + " Boards");
+        for (int i = 0; i < n; i++){
+            int[][] brd;
+            Random ran = new Random();
+            int randomInt = ran.nextInt(81);
+            EmptyCells += randomInt;
+            brd = EmptyBoard(randomInt);
+            if (isValidBoard(brd)) {
+                ValCreated++;
+                System.out.println("Board Number: " + i);
+                printBoard(brd);
+                isSolvableBoard(brd);
+                System.out.println("Solution of Board Number: " + i);
+                printBoard(brd);
+                System.out.println("=========================");
+            }
+            else
+                InvCreated++;
+        }
+
+        long end = System.currentTimeMillis();
+        long totaltime = (end - start);
+        System.out.println("Empty cells per board: " + EmptyCells/n);
+        System.out.println("Valid Boards Created: " + ValCreated);
+        System.out.println("Invalid Boards Created: " + InvCreated);
+        System.out.println("Total Time Elapsed: " + totaltime/1000f + " (seconds)");
+    }
+
+    public boolean isValidBoard(int[][] brd){
         //Checking Rows
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
             for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
@@ -90,12 +116,15 @@ public class BacktrackingAlgorithm {
         return true;
     }
 
-    boolean isSolvableBoard(int[][] board){
-
-        return true;
+    public boolean isSolvableBoard(int[][] board){
+        BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
+        if (!isValidBoard(board)) {
+            return false;
+        }
+        return solver.solve(board);
     }
 
-    static int[][] EmptyBoard(int x){
+    private int[][] EmptyBoard(int x){
         int[][] board = new int[BOARD_SIZE][BOARD_SIZE];
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
             for(int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
@@ -104,7 +133,7 @@ public class BacktrackingAlgorithm {
                 board[row][column] = randomInt;
             }
         }
-        for (int i = 0; i < x;){
+        for (int i = 0; i < 81 - x;){
             Random ran = new Random();
             int index = ran.nextInt(81);
             int row = index / BOARD_SIZE;
@@ -117,10 +146,10 @@ public class BacktrackingAlgorithm {
         return board;
     }
 
-    private void printBoard() {
+    private void printBoard(int[][] brd) {
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
             for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-                System.out.print(board[row][column] + " ");
+                System.out.print(brd[row][column] + " ");
             }
             System.out.println();
         }
