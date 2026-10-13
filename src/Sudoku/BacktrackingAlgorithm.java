@@ -33,18 +33,19 @@ public class BacktrackingAlgorithm {
     };
 
     public static void main(String[] args) {
-        //int[][] brd;
-        //brd = EmptyBoard(45);
-        //for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
-        //    for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-        //        System.out.print(brd[row][column] + " ");
-        //    }
-        //    System.out.println();
-        //}
-        //System.exit(0);
+        //Testing!
+        int[][] brd;
+        brd = EmptyBoard(45);
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
+                System.out.print(brd[row][column] + " ");
+            }
+            System.out.println();
+        }
         boolean f = isValidBoard(board);
         System.out.println(f);
         System.exit(0);
+
         BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
         solver.solve(board);
         solver.printBoard();
@@ -74,6 +75,18 @@ public class BacktrackingAlgorithm {
         }
 
         //Checking Subsections
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row+=3){
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column+=3){
+                for(int rowi = row; rowi < row + 3; rowi++){
+                    for(int columni = column; columni < column + 3; columni++){
+                        for (int k = column; k < column + 3; k++)
+                            for (int j = row; j < row + 3; j++)
+                                if ((brd[rowi][columni] != 0) && (brd[rowi][columni] == brd[j][k]) && (columni != k) && (rowi != j)) return false;
+                    }
+                }
+            }
+        }
+
         return true;
     }
 
