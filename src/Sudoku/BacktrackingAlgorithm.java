@@ -81,10 +81,10 @@ public class BacktrackingAlgorithm {
         //Checking Rows
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
             for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
-                if (!(brd[row][column] >= 0 && brd[row][column] <= MAX_VALUE)) return false;
+                if (!(brd[row][column] >= NO_VALUE && brd[row][column] <= MAX_VALUE)) return false;
 
                 for(int k = BOARD_START_INDEX; k < column; k++) {
-                    if (brd[row][k] == brd[row][column] && brd[row][k] != 0) return false;
+                    if (brd[row][k] == brd[row][column] && brd[row][k] != NO_VALUE) return false;
                 }
             }
         }
@@ -92,10 +92,10 @@ public class BacktrackingAlgorithm {
         //Checking Columns
         for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
             for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
-                if (!(brd[row][column] >= 0 && brd[row][column] <= MAX_VALUE)) return false;
+                if (!(brd[row][column] >= NO_VALUE && brd[row][column] <= MAX_VALUE)) return false;
 
                 for(int k = BOARD_START_INDEX; k < row; k++) {
-                    if (brd[k][column] == brd[row][column] && brd[k][column] != 0) return false;
+                    if (brd[k][column] == brd[row][column] && brd[k][column] != NO_VALUE) return false;
                 }
             }
         }
@@ -107,7 +107,7 @@ public class BacktrackingAlgorithm {
                     for(int columni = column; columni < column + SUBSECTION_SIZE; columni++){
                         for (int k = column; k < column + SUBSECTION_SIZE; k++)
                             for (int j = row; j < row + SUBSECTION_SIZE; j++)
-                                if ((brd[rowi][columni] != 0) && (brd[rowi][columni] == brd[j][k]) && (columni != k) && (rowi != j)) return false;
+                                if ((brd[rowi][columni] != NO_VALUE) && (brd[rowi][columni] == brd[j][k]) && (columni != k) && (rowi != j)) return false;
                     }
                 }
             }
