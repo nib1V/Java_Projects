@@ -13,7 +13,7 @@ import java.util.Random;
 public class BacktrackingAlgorithm {
 
     private static final int BOARD_SIZE = 9;
-    private static final int SUBSECTION_SIZE = 3;
+    public static final int SUBSECTION_SIZE = 3;
     private static final int BOARD_START_INDEX = 0;
 
     private static final int NO_VALUE = 0;
@@ -75,12 +75,12 @@ public class BacktrackingAlgorithm {
         }
 
         //Checking Subsections
-        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row+=3){
-            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column+=3){
-                for(int rowi = row; rowi < row + 3; rowi++){
-                    for(int columni = column; columni < column + 3; columni++){
-                        for (int k = column; k < column + 3; k++)
-                            for (int j = row; j < row + 3; j++)
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row+=SUBSECTION_SIZE){
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column+=SUBSECTION_SIZE){
+                for(int rowi = row; rowi < row + SUBSECTION_SIZE; rowi++){
+                    for(int columni = column; columni < column + SUBSECTION_SIZE; columni++){
+                        for (int k = column; k < column + SUBSECTION_SIZE; k++)
+                            for (int j = row; j < row + SUBSECTION_SIZE; j++)
                                 if ((brd[rowi][columni] != 0) && (brd[rowi][columni] == brd[j][k]) && (columni != k) && (rowi != j)) return false;
                     }
                 }
