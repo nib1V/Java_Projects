@@ -8,11 +8,7 @@ package Sudoku;
  * and the solvability of the sudoku board
  */
 
-import javax.xml.bind.SchemaOutputResolver;
-import java.awt.font.FontRenderContext;
 import java.util.Random;
-
-import static java.lang.Math.floor;
 
 public class BacktrackingAlgorithm {
 
@@ -46,17 +42,38 @@ public class BacktrackingAlgorithm {
         //    System.out.println();
         //}
         //System.exit(0);
+        boolean f = isValidBoard(board);
+        System.out.println(f);
+        System.exit(0);
         BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
         solver.solve(board);
         solver.printBoard();
     }
 
-    boolean isValidBoard(int[][] brd){
+    static boolean isValidBoard(int[][] brd){
+        //Checking Rows
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
             for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
+                if (!(brd[row][column] >= 0 && brd[row][column] <= MAX_VALUE)) return false;
 
+                for(int k = BOARD_START_INDEX; k < column; k++) {
+                    if (brd[row][k] == brd[row][column] && brd[row][k] != 0) return false;
+                }
             }
         }
+
+        //Checking Columns
+        for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
+            for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
+                if (!(brd[row][column] >= 0 && brd[row][column] <= MAX_VALUE)) return false;
+
+                for(int k = BOARD_START_INDEX; k < row; k++) {
+                    if (brd[k][column] == brd[row][column] && brd[k][column] != 0) return false;
+                }
+            }
+        }
+
+        //Checking Subsections
         return true;
     }
 
