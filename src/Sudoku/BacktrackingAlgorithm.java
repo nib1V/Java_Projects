@@ -8,6 +8,12 @@ package Sudoku;
  * and the solvability of the sudoku board
  */
 
+import javax.xml.bind.SchemaOutputResolver;
+import java.awt.font.FontRenderContext;
+import java.util.Random;
+
+import static java.lang.Math.floor;
+
 public class BacktrackingAlgorithm {
 
     private static final int BOARD_SIZE = 9;
@@ -31,13 +37,54 @@ public class BacktrackingAlgorithm {
     };
 
     public static void main(String[] args) {
+        //int[][] brd;
+        //brd = EmptyBoard(45);
+        //for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+        //    for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
+        //        System.out.print(brd[row][column] + " ");
+        //    }
+        //    System.out.println();
+        //}
+        //System.exit(0);
         BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
         solver.solve(board);
         solver.printBoard();
     }
 
     boolean isValidBoard(int[][] brd){
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
+
+            }
+        }
         return true;
+    }
+
+    boolean isSolvableBoard(int[][] board){
+
+        return true;
+    }
+
+    static int[][] EmptyBoard(int x){
+        int[][] board = new int[BOARD_SIZE][BOARD_SIZE];
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++){
+            for(int column = BOARD_START_INDEX; column < BOARD_SIZE; column++){
+                Random randomGenerator = new Random();
+                int randomInt = randomGenerator.nextInt(MAX_VALUE-MIN_VALUE+1) + MIN_VALUE;
+                board[row][column] = randomInt;
+            }
+        }
+        for (int i = 0; i < x;){
+            Random ran = new Random();
+            int index = ran.nextInt(81);
+            int row = index / BOARD_SIZE;
+            int column = index % BOARD_SIZE;
+            if (board[row][column] != 0 ) {
+                board[row][column] = 0;
+                i++;
+            }
+        }
+        return board;
     }
 
     private void printBoard() {
