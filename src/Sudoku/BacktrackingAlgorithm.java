@@ -37,28 +37,25 @@ public class BacktrackingAlgorithm {
         System.out.print("Enter the number of Boards you want to test: ");
         Scanner scanner = new Scanner(System.in);
         int value = scanner.nextInt();
-
+        System.out.println("Enter the number of spaces in the board (preferably over 65): ");
+        int emptyCells = scanner.nextInt();
         BacktrackingAlgorithm sudoku = new BacktrackingAlgorithm();
-        sudoku.Creator(value);
+        sudoku.Creator(value, emptyCells);
     }
 
 
-    public void Creator(int n){
+    public void Creator(int n, int cells){
         long start = System.currentTimeMillis();
         int ValCreated = 0;
         int InvCreated = 0;
-        int EmptyCells = 0;
 
         System.out.println("For N = " + n + " Boards");
         for (int i = 0; i < n; i++){
             int[][] brd;
-            Random ran = new Random();
-            int randomInt = ran.nextInt(81);
-            EmptyCells += randomInt;
-            brd = EmptyBoard(randomInt);
+            brd = EmptyBoard(cells);
             if (isValidBoard(brd)) {
                 ValCreated++;
-                System.out.println("Board Number: " + i);
+                System.out.println("Board Number: " + i + 1);
                 printBoard(brd);
                 isSolvableBoard(brd);
                 System.out.println("Solution of Board Number: " + i);
@@ -71,7 +68,7 @@ public class BacktrackingAlgorithm {
 
         long end = System.currentTimeMillis();
         long totaltime = (end - start);
-        System.out.println("Empty cells per board: " + EmptyCells/n);
+        System.out.println("Empty cells per board: " + cells);
         System.out.println("Valid Boards Created: " + ValCreated);
         System.out.println("Invalid Boards Created: " + InvCreated);
         System.out.println("Total Time Elapsed: " + totaltime/1000f + " (seconds)");
@@ -133,7 +130,7 @@ public class BacktrackingAlgorithm {
                 board[row][column] = randomInt;
             }
         }
-        for (int i = 0; i < 81 - x;){
+        for (int i = 0; i < x;){
             Random ran = new Random();
             int index = ran.nextInt(81);
             int row = index / BOARD_SIZE;
