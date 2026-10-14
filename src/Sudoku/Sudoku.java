@@ -11,7 +11,7 @@ package Sudoku;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BacktrackingAlgorithm {
+public class Sudoku {
 
     private static final int BOARD_SIZE = 9;
     public static final int SUBSECTION_SIZE = 3;
@@ -27,7 +27,7 @@ public class BacktrackingAlgorithm {
         int value = scanner.nextInt();
         System.out.println("Enter the number of spaces in the board (preferably over 65): ");
         int emptyCells = scanner.nextInt();
-        BacktrackingAlgorithm sudoku = new BacktrackingAlgorithm();
+        Sudoku sudoku = new Sudoku();
         sudoku.Creator(value, emptyCells);
     }
 
@@ -101,7 +101,7 @@ public class BacktrackingAlgorithm {
     }
 
     public boolean isSolvableBoard(int[][] board){
-        BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
+        Sudoku solver = new Sudoku();
         if (!isValidBoard(board)) {
             return false;
         }
