@@ -1,16 +1,10 @@
 package Sudoku;
 
-/*
- * The Code provided for the Backtracking Algorithm
- * is provided from: is from: https://www.baeldung.com/java-sudoku
- * and used to solve the sudoku puzzle.
- * I have added a few methods to check the input
- * and the solvability of the sudoku board
- */
-
 import java.util.Random;
 import java.util.Scanner;
+import static Sudoku.BackTrackingAlgorithm.printBoard;
 
+// HY252 - A1 - Exercise 3
 public class Sudoku {
 
     private static final int BOARD_SIZE = 9;
@@ -101,7 +95,7 @@ public class Sudoku {
     }
 
     public boolean isSolvableBoard(int[][] board){
-        Sudoku solver = new Sudoku();
+        BackTrackingAlgorithm solver = new BackTrackingAlgorithm();
         if (!isValidBoard(board)) {
             return false;
         }
@@ -128,85 +122,5 @@ public class Sudoku {
             }
         }
         return board;
-    }
-
-    private void printBoard(int[][] brd) {
-        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
-            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-                System.out.print(brd[row][column] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public boolean solve(int[][] board) {
-        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
-            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-                if (board[row][column] == NO_VALUE) {
-                    for (int k = MIN_VALUE; k <= MAX_VALUE; k++) {
-                        board[row][column] = k;
-                        if (isValid(board, row, column) && solve(board)) {
-                            return true;
-                        }
-                        board[row][column] = NO_VALUE;
-                    }
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private boolean isValid(int[][] board, int row, int column) {
-        return rowConstraint(board, row) &&
-                columnConstraint(board, column) &&
-                subsectionConstraint(board, row, column);
-    }
-
-    private boolean subsectionConstraint(int[][] board, int row, int column) {
-        boolean[] constraint = new boolean[BOARD_SIZE];
-        int subsectionRowStart = (row / SUBSECTION_SIZE) * SUBSECTION_SIZE;
-        int subsectionRowEnd = subsectionRowStart + SUBSECTION_SIZE;
-
-        int subsectionColumnStart = (column / SUBSECTION_SIZE) * SUBSECTION_SIZE;
-        int subsectionColumnEnd = subsectionColumnStart + SUBSECTION_SIZE;
-
-        for (int r = subsectionRowStart; r < subsectionRowEnd; r++) {
-            for (int c = subsectionColumnStart; c < subsectionColumnEnd; c++) {
-                if (!checkConstraint(board, r, constraint, c)) return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean columnConstraint(int[][] board, int column) {
-        boolean[] constraint = new boolean[BOARD_SIZE];
-        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
-            if (!checkConstraint(board, row, constraint, column)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean rowConstraint(int[][] board, int row) {
-        boolean[] constraint = new boolean[BOARD_SIZE];
-        for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
-            if (!checkConstraint(board, row, constraint, column)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkConstraint(int[][] board, int row, boolean[] constraint, int column) {
-        if (board[row][column] != NO_VALUE) {
-            if (!constraint[board[row][column] - 1]) {
-                constraint[board[row][column] - 1] = true;
-            } else {
-                return false;
-            }
-        }
-        return true;
     }
 }
