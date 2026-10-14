@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 import static Sudoku.BackTrackingAlgorithm.printBoard;
 
-// HY252 - A1 - Exercise 3
 public class Sudoku {
 
     private static final int BOARD_SIZE = 9;
