@@ -18,7 +18,7 @@ public class Sudoku {
         System.out.print("Enter the number of Boards you want to test: ");
         Scanner scanner = new Scanner(System.in);
         int value = scanner.nextInt();
-        System.out.println("Enter the number of spaces in the board (preferably over 65): ");
+        System.out.print("Enter the number of spaces in the board (preferably over 65): ");
         int emptyCells = scanner.nextInt();
         Sudoku sudoku = new Sudoku();
         sudoku.Creator(value, emptyCells);
@@ -35,7 +35,7 @@ public class Sudoku {
             brd = EmptyBoard(cells);
             if (isValidBoard(brd)) {
                 ValCreated++;
-                System.out.println("Board Number: " + i + 1);
+                System.out.println("Board Number: " + i);
                 printBoard(brd);
                 isSolvableBoard(brd);
                 System.out.println("Solution of Board Number: " + i);
