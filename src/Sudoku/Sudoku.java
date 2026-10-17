@@ -28,19 +28,22 @@ public class Sudoku {
         long start = System.currentTimeMillis();
         int ValCreated = 0;
         int InvCreated = 0;
-
+        int SolvableBrd = 0;
         System.out.println("For N = " + n + " Boards");
         for (int i = 0; i < n; i++){
             int[][] brd;
             brd = EmptyBoard(cells);
             if (isValidBoard(brd)) {
                 ValCreated++;
-                System.out.println("Board Number: " + i);
-                printBoard(brd);
-                isSolvableBoard(brd);
-                System.out.println("Solution of Board Number: " + i);
-                printBoard(brd);
-                System.out.println("=========================");
+                int[][] temp = CopyBoard(brd);
+                if (isSolvableBoard(brd)) {
+                    SolvableBrd++;
+                    System.out.println("Board Number: " + i);
+                    printBoard(temp);
+                    System.out.println("Solution of Board Number: " + i);
+                    printBoard(brd);
+                    System.out.println("=========================");
+                }
             }
             else
                 InvCreated++;
@@ -50,8 +53,19 @@ public class Sudoku {
         long totaltime = (end - start);
         System.out.println("Empty cells per board: " + cells);
         System.out.println("Valid Boards Created: " + ValCreated);
+        System.out.println("Solvable Boards Created: " + SolvableBrd);  //Only shows any difference on big N values
         System.out.println("Invalid Boards Created: " + InvCreated);
         System.out.println("Total Time Elapsed: " + totaltime/1000f + " (seconds)");
+    }
+
+    public int[][] CopyBoard(int[][] board){
+        int[][] newbrd = new int[9][9];
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
+                newbrd[row][column] = board[row][column];
+            }
+        }
+        return newbrd;
     }
 
     public boolean isValidBoard(int[][] brd){
