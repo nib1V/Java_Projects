@@ -10,6 +10,10 @@ public class Cube extends SolidShape{
         this.side = side;
     }
 
+    Cube(double side){
+        this(0.0,0.0,0.0, side);
+    }
+
     //Cube's Encapsulation Setters and Getters
     public double getSide() {return side;}
     public void setSide(int side) {this.side = side;}

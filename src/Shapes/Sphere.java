@@ -10,6 +10,10 @@ public class Sphere extends SolidShape{
         this.radius = radius;
     }
 
+    Sphere(double radius){
+        this(0.0,0.0,0.0, radius);
+    }
+
     //Sphere's Encapsulation Setters and Getters
     public double getRadius() {return radius;}
     public void setRadius(double radius) {this.radius = radius;}
