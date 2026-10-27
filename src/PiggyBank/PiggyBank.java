@@ -14,6 +14,12 @@ public class PiggyBank {
     private boolean broken = false;
 
     //Constructor of PiggyBank
+    public PiggyBank(BankNote note, Coin coin){
+        this.banknotes++;
+        this.coins++;
+        arr[size++] = (double)note.getval() + coin.getval();
+    }
+
     public PiggyBank(){
     }
 
