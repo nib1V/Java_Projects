@@ -8,7 +8,7 @@ public class BankNote {
 
     //Constructor of BankNote
     public BankNote(int value) throws InvalidBankNoteException {
-        if (value != 5 && value != 10 && value != 20 && value != 50 &&
+        if (value!= 0 && value != 5 && value != 10 && value != 20 && value != 50 &&
             value != 100 && value != 200 && value != 500)
             throw new InvalidBankNoteException();
         this.value = value;

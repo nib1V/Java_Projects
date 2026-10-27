@@ -6,7 +6,7 @@ import PiggyBank.Exceptions.PiggyBankIsNotBrokenException;
 
 public class PiggyBank {
     //Private data members of PiggyBank
-    private double money;
+    private double money = 0.0;
     private double[] arr = new double[100];
     private int size = 0;
     private int banknotes = 0;
@@ -20,6 +20,7 @@ public class PiggyBank {
         arr[size++] = (double)note.getval() + coin.getval();
     }
 
+    //No argument constructor
     public PiggyBank(){
     }
 
@@ -27,8 +28,8 @@ public class PiggyBank {
     public void addMoney(BankNote note, Coin coin) throws PiggyBankFullException, PiggyBankIsBrokenException{
         if (isBroken()) throw new PiggyBankIsBrokenException();
         if (isFull()) throw new PiggyBankFullException();
-        this.banknotes++;
-        this.coins++;
+        banknotes++;
+        coins++;
         arr[size++] = (double)note.getval() + coin.getval();
     }
 
@@ -46,7 +47,7 @@ public class PiggyBank {
         if (isBroken()) throw new PiggyBankIsBrokenException();
         this.broken = true;
         double sum = 0.0;
-        for (int i = 0; i < size - 1; i++) sum += arr[i];
+        for (int i = 0; i < size; i++) sum += arr[i];
         money = sum;
         return sum;
     }
@@ -56,5 +57,3 @@ public class PiggyBank {
         return money;
     }
 }
-
-
