@@ -24,8 +24,9 @@ public class PiggyBank {
     }
 
     //Transformers of PiggyBank
-    public void addMoney(BankNote note, Coin coin) throws PiggyBankFullException{
-        if (isBroken()) throw new PiggyBankFullException();
+    public void addMoney(BankNote note, Coin coin) throws PiggyBankFullException, PiggyBankIsBrokenException{
+        if (isBroken()) throw new PiggyBankIsBrokenException();
+        if (isFull()) throw new PiggyBankFullException();
         this.banknotes++;
         this.coins++;
         arr[size++] = (double)note.getval() + coin.getval();
@@ -33,7 +34,7 @@ public class PiggyBank {
 
     //Observers of PiggyBank
     public boolean isFull(){
-        return (banknotes + coins) == 100;
+        return (banknotes == 100) && (coins == 1000);
     }
 
     public boolean isBroken(){
