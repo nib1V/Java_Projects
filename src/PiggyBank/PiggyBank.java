@@ -2,9 +2,11 @@ package PiggyBank;
 
 import PiggyBank.Exceptions.PiggyBankFullException;
 import PiggyBank.Exceptions.PiggyBankIsBrokenException;
+import PiggyBank.Exceptions.PiggyBankIsNotBrokenException;
 
 public class PiggyBank {
     //Private data members of PiggyBank
+    private double money;
     private double[] arr = new double[100];
     private int size = 0;
     private int banknotes = 0;
@@ -25,7 +27,7 @@ public class PiggyBank {
 
     //Observers of PiggyBank
     public boolean isFull(){
-        return size == 100;
+        return (banknotes + coins) == 100;
     }
 
     public boolean isBroken(){
@@ -38,7 +40,13 @@ public class PiggyBank {
         this.broken = true;
         double sum = 0.0;
         for (int i = 0; i < size - 1; i++) sum += arr[i];
+        money = sum;
         return sum;
+    }
+
+    public double getMoney() throws PiggyBankIsNotBrokenException{
+        if (!isBroken()) throw new PiggyBankIsNotBrokenException();
+        return money;
     }
 }
 
