@@ -14,10 +14,14 @@ public class PiggyBank {
     private boolean broken = false;
 
     //Constructor of PiggyBank
-    public PiggyBank(BankNote note, Coin coin){
-        this.banknotes++;
-        this.coins++;
-        arr[size++] = (double)note.getval() + coin.getval();
+    public PiggyBank(Currency currency){
+        if (currency instanceof BankNote){
+            banknotes++;
+        }
+        else if (currency instanceof Coin){
+            coins++;
+        }
+        arr[size++] = currency.getval();
     }
 
     //No argument constructor
@@ -25,12 +29,16 @@ public class PiggyBank {
     }
 
     //Transformers of PiggyBank
-    public void addMoney(BankNote note, Coin coin) throws PiggyBankFullException, PiggyBankIsBrokenException{
+    public void addMoney(Currency currency) throws PiggyBankFullException, PiggyBankIsBrokenException{
         if (isBroken()) throw new PiggyBankIsBrokenException();
         if (isFull()) throw new PiggyBankFullException();
-        banknotes++;
-        coins++;
-        arr[size++] = (double)note.getval() + coin.getval();
+        if (currency instanceof BankNote){
+            banknotes++;
+        }
+        else if(currency instanceof Coin){
+            coins++;
+        }
+        arr[size++] = currency.getval();
     }
 
     //Observers of PiggyBank

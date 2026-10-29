@@ -2,18 +2,19 @@ package PiggyBank;
 
 import PiggyBank.Exceptions.InvalidBankNoteException;
 
-public class BankNote {
+public class BankNote extends Currency{
     //Private Data Member of BankNote
-    private int value;
+    private double value;
 
     //Constructor of BankNote
-    public BankNote(int value) throws InvalidBankNoteException {
-        if (value!= 0 && value != 5 && value != 10 && value != 20 && value != 50 &&
+    public BankNote(double value) throws InvalidBankNoteException {
+        super(value);
+        if (value != 5 && value != 10 && value != 20 && value != 50 &&
             value != 100 && value != 200 && value != 500)
             throw new InvalidBankNoteException();
         this.value = value;
     }
 
     //Getter of BankNote
-    public int getval() {return value;}
+    public double getval() {return value;}
 }

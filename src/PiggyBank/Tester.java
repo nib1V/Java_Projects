@@ -7,11 +7,12 @@ public class Tester {
     public static void main(String[] args) {
         try{
             PiggyBank bank = new PiggyBank();
-            bank.addMoney(new BankNote(10), new Coin(0.5));
-            bank.addMoney(new BankNote(50), new Coin(0.01));
-            bank.addMoney(new BankNote(100), new Coin(1.0));
-            bank.addMoney(new BankNote(5), new Coin(2.0));
-//            bank.breakPiggyBank();
+            bank.addMoney(new BankNote(10.0));
+            bank.addMoney(new Coin(0.2));
+            bank.addMoney(new Coin(1.0));
+            bank.addMoney(new BankNote(20));
+            bank.addMoney(new Coin(1.5));
+            bank.breakPiggyBank();
             System.out.println(bank.getMoney());
         }
         catch (PiggyBankIsBrokenException e){
