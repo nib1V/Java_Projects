@@ -1,4 +1,9 @@
 package HeistGame.person;
 
-public class HeistMember {
+import HeistGame.armor.Gun;
+
+public class HeistMember extends Member{
+    public HeistMember(String name, Gun gun, boolean bodyArmor, int iq, int physicalStrength){
+        super(name, 10, gun, bodyArmor, iq, physicalStrength);
+    }
 }
