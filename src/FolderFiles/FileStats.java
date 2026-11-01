@@ -3,7 +3,6 @@ package FolderFiles;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.JFileChooser;
 import static FolderFiles.Utils.selectAFolderDialog;
 
@@ -54,6 +53,5 @@ public class FileStats {
         GUIskeleton GUI = new GUIskeleton(imagePathNames);
         System.out.println("Directories Visited: " + directoriesVisited);
         System.out.println("Files Visited: " + filesVisited);
-
     }
 }

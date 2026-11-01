@@ -1,8 +1,11 @@
 package FolderFiles;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -16,17 +19,31 @@ class GUIskeleton extends JFrame implements ActionListener {
             JButton btext = new JButton(s);
             btext.addActionListener(this);
             add(btext);
+            add(new JLabel(new ImageIcon(s)));
         }
         setVisible(true);
+        //The windowlistener here is used in order to be able to close the frame
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         Object so = e.getSource();
         if (so instanceof JButton) {
             JButton sj = (JButton) so;
             String sjt = sj.getText();
-            System.out.println(sjt);
+            Desktop dt = Desktop.getDesktop();
+            try{
+                dt.open(new File(sjt));
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+
         }
     }
 }
