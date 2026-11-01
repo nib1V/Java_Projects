@@ -3,17 +3,16 @@ package FolderFiles;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.util.ArrayList;
+import javax.swing.*;
 
 class GUIskeleton extends JFrame implements ActionListener {
 
-    GUIskeleton() {
+    GUIskeleton(ArrayList<String> images) {
         setTitle("252-2026: A24");
         setBounds(200, 100, 800, 600); // x, y, width, height
         setLayout(new GridLayout(0, 4)); // rows, columns
-        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8"};
-        for (String s : data) {
+        for (String s : images) {
             JButton btext = new JButton(s);
             btext.addActionListener(this);
             add(btext);
@@ -29,9 +28,5 @@ class GUIskeleton extends JFrame implements ActionListener {
             String sjt = sj.getText();
             System.out.println(sjt);
         }
-    }
-
-    public static void main(String[] args) {
-        GUIskeleton g = new GUIskeleton();
     }
 }
