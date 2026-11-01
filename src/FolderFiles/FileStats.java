@@ -12,7 +12,6 @@ public class FileStats {
 
     public static void listFilesForFolder(File folder) {
         File[] entries = folder.listFiles();
-        MakeHTML(entries);
         if (entries == null) {
             return;
         }
@@ -21,22 +20,22 @@ public class FileStats {
                 directoriesVisited++;
                 listFilesForFolder(fileEntry);
             } else {
+                String path = fileEntry.getAbsolutePath();
+                if (path.endsWith(".png") || path.endsWith(".jpg") || path.endsWith("jpeg"))
+                    imagePathNames.add(fileEntry.getAbsolutePath());
                 filesVisited++;
             }
         }
     }
 
-    public static void MakeHTML(File[] files){
+    public static void MakeHTML(){
         PrintWriter writer;
         try {
             writer = new PrintWriter("images.html");
             writer.println("<!DOCTYPE html>\n<html>\n\t<body>");
-            for (int i = 0; i < files.length; i++) {
-                String fileType = files[i].getAbsolutePath();
-                if (fileType.endsWith(".png") || fileType.endsWith(".jpg") || fileType.endsWith("jpeg")){
-                    imagePathNames.add(files[i].getAbsolutePath());
-                    writer.println("\t\t<img src=\""+ files[i].toURI() +"\" alt=\"aa\" height=\"250\">");
-                }
+            for (int i = 0; i < imagePathNames.size(); i++) {
+                String fileType = imagePathNames.get(i);
+                writer.println("\t\t<img src=\""+ new File(fileType).toURI() +"\" alt=\"aa\" height=\"250\">");
             }
             writer.println("\t</body>\n</html>");
             writer.close();
@@ -50,6 +49,7 @@ public class FileStats {
         if (s.isEmpty()) return;
         File folder = new File(s);
         listFilesForFolder(folder);
+        MakeHTML();
         GUIskeleton GUI = new GUIskeleton(imagePathNames);
         System.out.println("Directories Visited: " + directoriesVisited);
         System.out.println("Files Visited: " + filesVisited);

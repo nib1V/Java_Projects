@@ -43,7 +43,6 @@ class GUIskeleton extends JFrame implements ActionListener {
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-
         }
     }
 }
