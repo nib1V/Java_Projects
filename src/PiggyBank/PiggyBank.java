@@ -11,6 +11,20 @@ import PiggyBank.Exceptions.PiggyBankIsNotBrokenException;
  *  The total capacity is {@code BankNotes <= 100} and {@code Coins <= 1000}.
  *  @see Coin
  *  @see BankNote
+ *  @Methods: new: returns PiggyBank<br>
+ *            new(C): returns PiggyBank<br>
+ *            isBroken: PiggyBank returns Boolean<br>
+ *            isFull: PiggyBank returns Boolean<br>
+ *            getMoney: PiggyBank returns Double<br>
+ *            beakPiggyBank: PiggyBank returns Double<br>
+ *            addMoney: PiggyBank, Currency returns void
+ *
+ *  @Variables: P: PiggyBank, C: Currency
+ *  @Axioms:  1) new.isBroken = false<br>
+ *            2) new.isFull = false<br>
+ *            3) new.breakPiggyBank = 0.0<br>
+ *            4) new.breakPiggyBank.getMoney = 0.0<br>
+ *            5) new.addMoney(C).breakPiggyBank = C.getval
  */
 public class PiggyBank {
     //Defining the capacity of the ADT:
@@ -22,20 +36,6 @@ public class PiggyBank {
     private double[] arr = new double[100];
     private int banknotes = 0, coins = 0, size = 0;
     private boolean broken = false;
-
-//
-//  Methods: new: returns PiggyBank<br>
-//           new(C): returns PiggyBank<br>
-//           isBroken: PiggyBank returns Boolean<br>
-//           isFull: PiggyBank returns Boolean<br>
-//           getMoney: PiggyBank returns Double<br>
-//           beakPiggyBank: PiggyBank returns Double<br>
-//           addMoney: PiggyBank, Currency returns void
-//
-//  Variables: P: PiggyBank, C: Currency
-//  Axioms:   1) new.isBroken = false<br>
-//            2) new.isFull = false<br>
-//            3) new.breakPiggyBank = 0.0
 
     //Constructor of PiggyBank:
     /**
@@ -99,7 +99,7 @@ public class PiggyBank {
      *  {@code True} or {@code False} based on the capacity of the piggybank.
      *  @class PiggyBank
      */
-    public boolean isFull(){return (banknotes == MAX_NOTES) && (coins == MAX_COINS);}
+    public boolean isFull(){return (banknotes == MAX_NOTES) || (coins == MAX_COINS);}
 
     /**
      *  <b>Pre-condition</b>:<br>

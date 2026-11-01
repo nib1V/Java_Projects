@@ -11,13 +11,12 @@ public class Tester {
             bank.addMoney(new Coin(0.2));
             bank.addMoney(new Coin(1.0));
             bank.addMoney(new BankNote(20));
-            bank.addMoney(new Coin(1.5));
+            bank.addMoney(new Coin(1.0));
             bank.breakPiggyBank();
             System.out.println(bank.getMoney());
         }
         catch (PiggyBankIsBrokenException e){
             System.out.println("Couldn't do anything because piggybank was broken");
-            System.exit(-1);
         }
         catch (PiggyBankFullException e){
             System.out.println("The piggybank was full couldn't add anything more to it");
