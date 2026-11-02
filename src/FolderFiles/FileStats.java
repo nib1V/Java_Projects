@@ -8,7 +8,7 @@ import static FolderFiles.Utils.selectAFolderDialog;
 
 public class FileStats {
     public static int directoriesVisited = 0, filesVisited = 0;
-    public static ArrayList<String> imagePathNames = new ArrayList<>();
+    public static ArrayList<String> imagePathNames = new ArrayList<String>();
 
     public static void listFilesForFolder(File folder) {
         File[] entries = folder.listFiles();
