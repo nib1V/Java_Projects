@@ -22,12 +22,7 @@ class GUIskeleton extends JFrame implements ActionListener {
             add(new JLabel(new ImageIcon(s)));
         }
         setVisible(true);
-        //The windowlistener here is used in order to be able to close the frame
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override
