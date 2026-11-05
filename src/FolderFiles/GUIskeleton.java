@@ -3,8 +3,6 @@ package FolderFiles;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -13,14 +11,23 @@ class GUIskeleton extends JFrame implements ActionListener {
 
     GUIskeleton(ArrayList<String> images) {
         setTitle("252-2026: A24");
-        setBounds(200, 100, 800, 600); // x, y, width, height
-        setLayout(new GridLayout(0, 4)); // rows, columns
+        setBounds(200, 100, 800, 600);
+        setLayout(new BorderLayout());
+        JPanel panel = new JPanel(new GridLayout(0, 4));
+        JScrollPane pane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollBar bar = pane.getVerticalScrollBar();
         for (String s : images) {
             JButton btext = new JButton(s);
             btext.addActionListener(this);
-            add(btext);
-            add(new JLabel(new ImageIcon(s)));
+            panel.add(btext);
+            panel.add(new JLabel(new ImageIcon(s)));
         }
+        JMenuBar menuBar = new JMenuBar();
+        JMenuItem menu = new JMenuItem("Select a new Folder");
+        menuBar.add(menu);
+        this.setJMenuBar(menuBar);
+        this.getContentPane().add(panel);
+        this.getContentPane().add(bar, BorderLayout.EAST);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
