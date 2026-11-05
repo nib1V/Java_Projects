@@ -14,7 +14,7 @@ class Utils {
         String filePath = "";
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(mode); // JFileChooser.DIRECTORIES_ONLY
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.name")));
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
