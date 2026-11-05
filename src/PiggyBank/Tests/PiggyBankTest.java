@@ -15,56 +15,56 @@ public class PiggyBankTest {
     //Post-Condition Testing
     @Test
     public void addMoneyPost() throws InvalidBankNoteException, PiggyBankFullException, PiggyBankIsBrokenException{
-        PiggyBank koumparas = new PiggyBank();
+        PiggyBank piggybank = new PiggyBank();
         BankNote note = new BankNote(10);
-        koumparas.addMoney(note);
-        assertEquals("Post-condition Testing: ", 10.0,  koumparas.breakPiggyBank(), 0.0);
+        piggybank.addMoney(note);
+        assertEquals("Post-condition Testing: ", 10.0,  piggybank.breakPiggyBank(), 0.0);
     }
 
     //Pre-Condition Testing
     @Test (expected = PiggyBankIsBrokenException.class)
     public void addMoneyPre1() throws InvalidBankNoteException, PiggyBankFullException, PiggyBankIsBrokenException {
-        PiggyBank koumparas = new PiggyBank();
-        koumparas.breakPiggyBank();
+        PiggyBank piggybank = new PiggyBank();
+        piggybank.breakPiggyBank();
         BankNote note = new BankNote(10);
-        koumparas.addMoney(note);
+        piggybank.addMoney(note);
     }
 
     //Pre-Condition Testing
     @Test (expected = PiggyBankFullException.class)
     public void addMoneyPre2() throws InvalidBankNoteException, PiggyBankFullException, PiggyBankIsBrokenException {
-        PiggyBank koumparas = new PiggyBank();
+        PiggyBank piggybank = new PiggyBank();
         for (int i = 0; i < 110; i++)
-            koumparas.addMoney(new BankNote(10));
+            piggybank.addMoney(new BankNote(10));
     }
 
     //Pre-Condition Testing
     @Test (expected = PiggyBankIsBrokenException.class)
     public void breakPiggyBankPre() throws PiggyBankIsBrokenException{
-        PiggyBank koumparas = new PiggyBank();
-        koumparas.breakPiggyBank();
-        koumparas.breakPiggyBank();
+        PiggyBank piggybank = new PiggyBank();
+        piggybank.breakPiggyBank();
+        piggybank.breakPiggyBank();
     }
 
     //Post-Condition Testing
     @Test
     public void breakPiggyBankPost() throws PiggyBankIsBrokenException{
-        PiggyBank koumparas = new PiggyBank();
-        assertEquals("Post-condition Testing: ", 0.0,  koumparas.breakPiggyBank(), 0.0);
+        PiggyBank piggybank = new PiggyBank();
+        assertEquals("Post-condition Testing: ", 0.0,  piggybank.breakPiggyBank(), 0.0);
     }
 
     //Pre-Condition Testing
     @Test (expected = PiggyBankIsNotBrokenException.class)
     public void getMoneyPre() throws PiggyBankIsNotBrokenException{
-        PiggyBank koumparas = new PiggyBank();
-        koumparas.getMoney();
+        PiggyBank piggybank = new PiggyBank();
+        piggybank.getMoney();
     }
 
     //Post-Condition Testing
     @Test
     public void getMoneyPost() throws PiggyBankIsNotBrokenException, PiggyBankIsBrokenException{
-        PiggyBank koumparas = new PiggyBank();
-        koumparas.breakPiggyBank();
-        assertEquals("Post-condition Testing: ", 0.0,  koumparas.getMoney(), 0.0);
+        PiggyBank piggybank = new PiggyBank();
+        piggybank.breakPiggyBank();
+        assertEquals("Post-condition Testing: ", 0.0,  piggybank.getMoney(), 0.0);
     }
 }
