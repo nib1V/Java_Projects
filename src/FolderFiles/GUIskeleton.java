@@ -15,7 +15,6 @@ class GUIskeleton extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
         JPanel panel = new JPanel(new GridLayout(0, 4));
         JScrollPane pane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        JScrollBar bar = pane.getVerticalScrollBar();
         for (String s : images) {
             JButton btext = new JButton(s);
             btext.addActionListener(this);
@@ -23,11 +22,22 @@ class GUIskeleton extends JFrame implements ActionListener {
             panel.add(new JLabel(new ImageIcon(s)));
         }
         JMenuBar menuBar = new JMenuBar();
-        JMenuItem menu = new JMenuItem("Select a new Folder");
-        menuBar.add(menu);
+        Button menu = new Button("Select a new Folder");
+        menu.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                dispose();
+                FileStats.filesVisited = 0;
+                FileStats.directoriesVisited = 0;
+                FileStats.imagePathNames = new ArrayList<>();
+                FileStats.main(null);
+            }
+        });
+        menuBar.setLayout(new BorderLayout());
+        menuBar.add(menu, BorderLayout.WEST);
         this.setJMenuBar(menuBar);
         this.getContentPane().add(panel);
-        this.getContentPane().add(bar, BorderLayout.EAST);
+        //ScrollBar still isn't working!
+        this.getContentPane().add(pane, BorderLayout.EAST);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
