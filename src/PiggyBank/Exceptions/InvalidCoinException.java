@@ -8,7 +8,7 @@ package PiggyBank.Exceptions;
  * @see PiggyBank.Exceptions
  */
 
-public class InvalidCoinException extends Exception{
+public class InvalidCoinException extends IllegalArgumentException{
     public InvalidCoinException(){
         super("Invalid coin value given!");
     }

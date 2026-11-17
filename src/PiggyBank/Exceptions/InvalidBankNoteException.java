@@ -7,7 +7,7 @@ package PiggyBank.Exceptions;
  * @see PiggyBank.Coin
  * @see PiggyBank.Exceptions
  */
-public class InvalidBankNoteException extends Exception{
+public class InvalidBankNoteException extends IllegalArgumentException{
     public InvalidBankNoteException(){
         super("Invalid BankNote value given!");
     }
