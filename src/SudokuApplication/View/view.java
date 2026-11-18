@@ -1,4 +1,4 @@
-package SudokuApplication;
+package SudokuApplication.View;
 
 import javax.swing.*;
 
