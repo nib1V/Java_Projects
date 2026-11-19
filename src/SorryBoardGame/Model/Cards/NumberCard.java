@@ -1,4 +1,4 @@
 package SorryBoardGame.Model.Cards;
 
-public class NumberCard extends Card{
+public abstract class NumberCard extends Card{
 }
