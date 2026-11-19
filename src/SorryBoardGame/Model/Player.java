@@ -52,6 +52,7 @@ public class Player {
      * Transformer method of {@code Player} Class.<br>
      * <b>Pre-Condition:</b> The given boolean value must be correct so that
      * both players of the game never have the same {@code myTurn} value.<br>
+     * <b>Post-Condition:</b> The value of {@code myTurn} is changed.
      * @class Player
      * @param value
      */
