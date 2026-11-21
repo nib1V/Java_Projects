@@ -1,13 +1,13 @@
 package SorryBoardGame.Model.Square;
 
-import java.awt.*;
+import static SorryBoardGame.Model.Resources.WHITE;
 
 public abstract class Square {
     private boolean hasPawn;
-    private Color colour;
+    private int color;
 
     public Square(){
-        colour = Color.WHITE;
+        this.color = WHITE;
         hasPawn = false;
     }
 

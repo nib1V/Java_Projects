@@ -1,17 +1,42 @@
 package SorryBoardGame.Model;
 
-import java.awt.*;
-
 public class Player {
     private String name;
     private Pawn[] pawns = new Pawn[2];
     private boolean myTurn;
-    private Color colour;
+    private int color;
 
-    public Player(String name, Color colour) {
+    /**
+     * Constructor of {@code Player} Class.<br>
+     * <b>Pre-Condition:</b> The given parameters are correct.<br>
+     * <b>Post-Condition:</b> Creates a new Player.
+     * @param name
+     * @param color
+     * @param board
+     * @class Player
+     */
+    public Player(String name, int color, Board board) {
+        pawns[0] = new Pawn(color, board.getStart(this)[0]);
+        pawns[1] = new Pawn(color, board.getStart(this)[1]);
         this.name = name;
-        this.colour = colour;
+        this.color = color;
     }
+
+    /**
+     * Transformer Method of {@code Player} Class.<br>
+     * <b>Pre-Condition:</b> The given color must be {@code YELLOW}(=1) or {@code RED}(=2).<br>
+     * <b>Post-Condition:</b> Updates the color of the Player correctly.
+     * @class Player
+     * @param color
+     */
+    public void setColor(int color){this.color = color;}
+
+    /**
+     * Accessor Method of {@code Player} Class.<br>
+     * <b>Post-Condition:</b> Returns the color of the {@code Player}.
+     * @class Player
+     */
+    public int getColor(){return color;}
 
     /**
      * Accessor Method of {@code Player} Class.<br>

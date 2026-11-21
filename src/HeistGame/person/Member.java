@@ -2,7 +2,6 @@ package HeistGame.person;
 
 import HeistGame.armor.Gun;
 import HeistGame.exception.DeadCharacterException;
-
 import static HeistGame.utilities.Utilities.getRandomVal;
 
 public abstract class Member extends GunCarrier implements Character{
