@@ -17,18 +17,19 @@ public class Deck {
      * @class Deck
      */
     public Deck(){
+        for(int j = 0; j < 44; j++) cards.add(null);
         for(int i = 0; i < 4; i++){
-            cards.add(i, new SorryCard());
-            cards.add(i + 4, new NumberOneCard());
-            cards.add(i + 8, new NumberTwoCard());
-            cards.add(i + 12, new NumberThreeCard());
-            cards.add(i + 16, new NumberFourCard());
-            cards.add(i + 20, new NumberFiveCard());
-            cards.add(i + 24, new NumberSevenCard());
-            cards.add(i + 28, new NumberEightCard());
-            cards.add(i + 32, new NumberTenCard());
-            cards.add(i + 36, new NumberElevenCard());
-            cards.add(i + 40, new NumberTwelveCard());
+            cards.set(i, new SorryCard());
+            cards.set(i + 4, new NumberOneCard());
+            cards.set(i + 8, new NumberTwoCard());
+            cards.set(i + 12, new NumberThreeCard());
+            cards.set(i + 16, new NumberFourCard());
+            cards.set(i + 20, new NumberFiveCard());
+            cards.set(i + 24, new NumberSevenCard());
+            cards.set(i + 28, new NumberEightCard());
+            cards.set(i + 32, new NumberTenCard());
+            cards.set(i + 36, new NumberElevenCard());
+            cards.set(i + 40, new NumberTwelveCard());
         }
         shuffle();
     }

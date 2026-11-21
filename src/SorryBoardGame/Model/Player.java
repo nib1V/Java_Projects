@@ -1,6 +1,6 @@
 package SorryBoardGame.Model;
 
-public class Player {
+public class Player{
     private String name;
     private Pawn[] pawns = new Pawn[2];
     private boolean myTurn;
