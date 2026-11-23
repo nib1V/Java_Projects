@@ -1,5 +1,7 @@
 package SorryBoardGame.Model.Square;
 
+import SorryBoardGame.Model.Pawn;
+
 public class StartSquare extends Square{
 
     /**
@@ -15,4 +17,8 @@ public class StartSquare extends Square{
         setHasPawn(true);
         setColor(Color);
     }
+
+
+    @Override
+    public void setPawn(Pawn pawn) {}
 }

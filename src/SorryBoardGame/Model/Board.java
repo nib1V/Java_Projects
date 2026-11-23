@@ -1,5 +1,7 @@
 package SorryBoardGame.Model;
 
+import SorryBoardGame.Model.Square.HomeSquare;
+import SorryBoardGame.Model.Square.SafetyZoneSquare;
 import SorryBoardGame.Model.Square.Square;
 import SorryBoardGame.Model.Square.StartSquare;
 
@@ -8,7 +10,10 @@ import static SorryBoardGame.Model.Resources.*;
 public class Board {
     private final StartSquare yellowStart;
     private final StartSquare redStart;
-//    private final Square[] fourLengthSlides = new Square[8];
+    private final SafetyZoneSquare[] yellowSafetyZoneSquares = new SafetyZoneSquare[5];
+    private final SafetyZoneSquare[] redSafetyZoneSquares = new SafetyZoneSquare[5];
+    private final HomeSquare yellowHomeSquare;
+    private final HomeSquare redHomeSquare;
 
     /**
      * Constructor of {@code Board} Class.<br>
@@ -16,8 +21,17 @@ public class Board {
      * @class Board
      */
     public Board(){
+        //Initializing Starting Squares for the two players
         yellowStart = new StartSquare(YELLOW);
         redStart = new StartSquare(RED);
+        //Initializing the safety zones of the two players
+        yellowHomeSquare = new HomeSquare(YELLOW);
+        redHomeSquare = new HomeSquare(RED);
+        for (int i = 0; i < 5; i++) {
+            yellowSafetyZoneSquares[i] = new SafetyZoneSquare(YELLOW);
+            redSafetyZoneSquares[i] = new SafetyZoneSquare(RED);
+        }
+
         //Add more about slide Squares and find a way to implement the 8 slides
     }
 
@@ -34,6 +48,34 @@ public class Board {
      * @class Board
      */
     public StartSquare getRedStart(){return redStart;}
+
+    /**
+     * Accessor method of {@code Board} Class.<br>
+     * <b>Post-Conditions:</b> Returns the Home Square of the Yellow Player.
+     * @class Board
+     */
+    public HomeSquare getYellowHomeSquare() {return yellowHomeSquare;}
+
+    /**
+     * Accessor method of {@code Board} Class.<br>
+     * <b>Post-Conditions:</b> Returns the Home Square of the Red Player.
+     * @class Board
+     */
+    public HomeSquare getRedHomeSquare() {return redHomeSquare;}
+
+    /**
+     * Accessor method of {@code Board} Class.<br>
+     * <b>Post-Conditions:</b> Returns an array of the safety zone squares of the Yellow Player.
+     * @class Board
+     */
+    public SafetyZoneSquare[] getYellowSafetyZoneSquares() {return yellowSafetyZoneSquares;}
+
+    /**
+     * Accessor method of {@code Board} Class.<br>
+     * <b>Post-Conditions:</b> Returns an array of the safety zone squares of the Red Player.
+     * @class Board
+     */
+    public SafetyZoneSquare[] getRedSafetyZoneSquares() {return redSafetyZoneSquares;}
 
     /**
      * Accessor method of {@code Board} Class.<br>

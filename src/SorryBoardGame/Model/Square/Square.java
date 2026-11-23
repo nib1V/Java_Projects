@@ -1,10 +1,12 @@
 package SorryBoardGame.Model.Square;
 
+import SorryBoardGame.Model.Pawn;
 import static SorryBoardGame.Model.Resources.WHITE;
 
 public abstract class Square {
     private boolean hasPawn;
     private int color;
+    private Pawn pawn;
 
     /**
      * Constructor of {@code Square} Class.<br>
@@ -14,6 +16,30 @@ public abstract class Square {
     public Square(){
         this.color = WHITE;
         hasPawn = false;
+        pawn = null;
+    }
+
+    /**
+     * Abstract Transformer method of {@code Square} Class.<br>
+     * Must be implemented by the Sub-Types of Square.<br>
+     * <b>Pre-Condition:</b> The given pawn is actually on this square after moving.<br>
+     * <b>Post-Condition:</b> The Square now has this pawn on it.
+     * @class Square
+     * @param pawn
+     */
+    public abstract void setPawn(Pawn pawn);
+    //Must Check if there is another pawn in given square and act according
+    //to the type of square
+
+    /**
+     * Accessor method of {@code Square} Class.<br>
+     * <b>Post-Condition:</b> Returns the {@code Pawn} in that square or null<br>
+     * if there is no Pawn in that square.
+     * @class Square
+     */
+    public Pawn getPawn() {
+        if (hasPawn()) return pawn;
+        else return null;
     }
 
     /**

@@ -66,6 +66,13 @@ public class Player{
     public Pawn getPawn(int number) throws IndexOutOfBoundsException {return pawns[number];}
 
     /**
+     * Accessor method of {@code Player} Class.<br>
+     * <b>Post-Condition:</b> Returns the array of the two Pawns.
+     * @class Player
+     */
+    public Pawn[] getPawns() {return pawns;}
+
+    /**
      * Observer method of {@code Player} class.<br>
      * <b>Post-Condition:</b> Returns {@code true} or {@code false} if it is the
      * player's turn.
