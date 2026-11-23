@@ -1,15 +1,24 @@
 package SorryBoardGame.Model;
 
+import SorryBoardGame.Model.Square.Square;
 import SorryBoardGame.Model.Square.StartSquare;
 
 import static SorryBoardGame.Model.Resources.*;
 
 public class Board {
-    private final StartSquare[] yellowStart = new StartSquare[2];
-    private final StartSquare[] redStart = new StartSquare[2];
+    private final StartSquare yellowStart;
+    private final StartSquare redStart;
+//    private final Square[] fourLengthSlides = new Square[8];
 
+    /**
+     * Constructor of {@code Board} Class.<br>
+     * <b>Post-Condition:</b> Creates the Board with all the needed squares.
+     * @class Board
+     */
     public Board(){
-
+        yellowStart = new StartSquare(YELLOW);
+        redStart = new StartSquare(RED);
+        //Add more about slide Squares and find a way to implement the 8 slides
     }
 
     /**
@@ -17,14 +26,14 @@ public class Board {
      * <b>Post-Condition:</b> Return the Yellow Player's Starting Square.
      * @class Board
      */
-    public StartSquare[] getYellowStart() {return yellowStart;}
+    public StartSquare getYellowStart() {return yellowStart;}
 
     /**
      * Accessor method of {@code Board} Class.<br>
      * <b>Post-Condition:</b> Return the Red Player's Starting Square.
      * @class Board
      */
-    public StartSquare[] getRedStart(){return redStart;}
+    public StartSquare getRedStart(){return redStart;}
 
     /**
      * Accessor method of {@code Board} Class.<br>
@@ -33,7 +42,7 @@ public class Board {
      * @class Board
      * @param player
      */
-    public StartSquare[] getStart(Player player){
+    public StartSquare getStart(Player player){
         if (player.getColor() == YELLOW) return getYellowStart();
         else return getRedStart();
     }

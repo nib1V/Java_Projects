@@ -16,8 +16,8 @@ public class Player{
      * @class Player
      */
     public Player(String name, int color, Board board) {
-        pawns[0] = new Pawn(color, board.getStart(this)[0]);
-        pawns[1] = new Pawn(color, board.getStart(this)[1]);
+        pawns[0] = new Pawn(color, board.getStart(this));
+        pawns[1] = new Pawn(color, board.getStart(this));
         this.name = name;
         this.color = color;
     }
