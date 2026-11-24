@@ -14,10 +14,7 @@ public class controller {
         Deck myDeck = new Deck();
         Player p1 = new Player("Player1", YELLOW, myBoard);
         Player p2 = new Player("Player2", RED, myBoard);
-        p1.getPawn(0).setCurrSquare(myBoard.getYellowStart());
-        p1.getPawn(1).setCurrSquare(myBoard.getYellowStart());
-        p2.getPawn(0).setCurrSquare(myBoard.getRedStart());
-        p2.getPawn(1).setCurrSquare(myBoard.getRedStart());
+
         view game = new view();
     }
 

@@ -23,15 +23,13 @@ public class Pawn {
 
     /**
      * Transformer Method of {@code Pawn} Class.<br>
-     * <b>Pre-Condition:</b> The given square is a square the pawn can actually go to.<br>
-     * <b>Post-Condition:</b> Changes the Current Square of the {@code Pawn} and the Pawn that
+     * <b>Pre-Condition:</b> The given square is a square the pawn actually goes to.<br>
+     * <b>Post-Condition:</b> Changes the Current Square of the {@code Pawn} and of the Pawn that
      * the given square has.
      * @class Pawn
      * @param square
      */
-    public void setCurrSquare(Square square) {
-        square.setPawn(this);
-        this.currSquare = square;}
+    public void setCurrSquare(Square square) {}
 
     /**
      * Accessor Method of {@code Pawn} Class.<br>
