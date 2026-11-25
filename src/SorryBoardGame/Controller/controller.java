@@ -23,7 +23,7 @@ public class controller {
         myDeck = new Deck();
         players[0] = new Player("Player1", YELLOW, myBoard);
         players[1] = new Player("Player2", RED, myBoard);
-        gameGUI = new view();
+        gameGUI = new view(myBoard);
     }
 
     /**

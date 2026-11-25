@@ -31,8 +31,8 @@ public class Board {
             yellowSafetyZoneSquares[i] = new SafetyZoneSquare(YELLOW);
             redSafetyZoneSquares[i] = new SafetyZoneSquare(RED);
         }
-
-        //Add more about slide Squares and find a way to implement the 8 slides
+        //Make an Array that's 16x16 of Squares and fill it with Simple Squares
+        //And Slider Squares wherever it's needed
     }
 
     /**
