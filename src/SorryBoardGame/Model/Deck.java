@@ -31,7 +31,7 @@ public class Deck {
             cards.set(i + 36, new NumberElevenCard());
             cards.set(i + 40, new NumberTwelveCard());
         }
-        shuffle();
+        reshuffle();
     }
 
     /**
@@ -40,12 +40,10 @@ public class Deck {
      * change the top of the Deck to the new one.
      * @class Deck
      */
-    public void shuffle(){
+    public void reshuffle(){
         Collections.shuffle(cards);
         top = 43;
     }
-
-    //Add more
 
     /**
      * Accessor Method used to Draw a Card from the top of the Deck.<br>
@@ -56,7 +54,7 @@ public class Deck {
      * @class Deck
      */
     public Card drawTop() {
-        if (isEmptyDeck()) shuffle();
+        if (isEmptyDeck()) reshuffle();
         return cards.get(top--);}
 
     /**
