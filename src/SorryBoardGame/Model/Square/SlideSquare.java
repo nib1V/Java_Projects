@@ -1,5 +1,7 @@
 package SorryBoardGame.Model.Square;
 
+import static SorryBoardGame.Model.Resources.*;
+
 public abstract class SlideSquare extends Square{
 
     /**
@@ -24,16 +26,16 @@ public abstract class SlideSquare extends Square{
     public String getIconColor() {
         String s = "";
         switch (getColor()) {
-            case 4:
+            case GREEN:
                 s = "green";
                 break;
-            case 3:
+            case BLUE:
                 s = "blue";
                 break;
-            case 1:
+            case YELLOW:
                 s = "yellow";
                 break;
-            case 2:
+            case RED:
                 s = "red";
                 break;
             default:
