@@ -1,5 +1,8 @@
 package SorryBoardGame.Model;
 
+/**
+ * Class used to keep a few static values used as codes for colors.
+ */
 public class Resources {
     public static final int WHITE = 0;
     public static final int BLUE = 3;

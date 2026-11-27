@@ -35,6 +35,10 @@ public class Board {
             redSafetyZoneSquares[i] = new SafetyZoneSquare(RED);
         }
 
+        InitializeSliders();
+    }
+
+    void InitializeSliders(){
         //Initializing the border of the board with all simple squares
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
@@ -54,7 +58,38 @@ public class Board {
         squares[0][12] = new InternalSlideSquare(RED);
         squares[0][13] = new EndSlideSquare(RED);
 
-        //Add the rest of the Initialization for the YELLOW, GREEN and BLUE sliders!
+        squares[2][0] = new StartSlideSquare(GREEN);
+        squares[3][0] = new InternalSlideSquare(GREEN);
+        squares[4][0] = new InternalSlideSquare(GREEN);
+        squares[5][0] = new InternalSlideSquare(GREEN);
+        squares[6][0] = new EndSlideSquare(GREEN);
+
+        squares[11][0] = new StartSlideSquare(GREEN);
+        squares[12][0] = new InternalSlideSquare(GREEN);
+        squares[13][0] = new InternalSlideSquare(GREEN);
+        squares[14][0] = new EndSlideSquare(GREEN);
+
+        squares[15][2] = new StartSlideSquare(YELLOW);
+        squares[15][3] = new InternalSlideSquare(YELLOW);
+        squares[15][4] = new InternalSlideSquare(YELLOW);
+        squares[15][5] = new InternalSlideSquare(YELLOW);
+        squares[15][6] = new EndSlideSquare(YELLOW);
+
+        squares[15][11] = new StartSlideSquare(YELLOW);
+        squares[15][12] = new InternalSlideSquare(YELLOW);
+        squares[15][13] = new InternalSlideSquare(YELLOW);
+        squares[15][14] = new EndSlideSquare(YELLOW);
+
+        squares[1][15] = new StartSlideSquare(BLUE);
+        squares[2][15] = new InternalSlideSquare(BLUE);
+        squares[3][15] = new InternalSlideSquare(BLUE);
+        squares[4][15] = new EndSlideSquare(BLUE);
+
+        squares[9][15] = new StartSlideSquare(BLUE);
+        squares[10][15] = new InternalSlideSquare(BLUE);
+        squares[11][15] = new InternalSlideSquare(BLUE);
+        squares[12][15] = new InternalSlideSquare(BLUE);
+        squares[13][15] = new EndSlideSquare(BLUE);
     }
 
     /**

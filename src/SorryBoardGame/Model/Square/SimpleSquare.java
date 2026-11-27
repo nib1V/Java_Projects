@@ -19,7 +19,7 @@ public class SimpleSquare extends Square{
      * <b>Post-Condition:</b> The Pawn is placed in the square or if there is another
      * one in the same square then the Pawn replaces it.
      * @class SimpleSquare
-     * @param pawn
+     * @param pawn the pawn to be placed in the square
      */
     @Override
     public void setPawn(Pawn pawn){}

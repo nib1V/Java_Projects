@@ -6,7 +6,21 @@ import SorryBoardGame.Model.Pawn;
 public class NumberFiveCard extends NumberCard{
     private String card = "src/SorryBoardGame/Assets/cards/card5.png";
 
+    /**
+     * Constructor of {@code NumberFiveCard} Class.<br>
+     * <b>Post-Condition:</b> Initializes a NumberCard with the value(=5).
+     * @class NumberFiveCard
+     */
+    public NumberFiveCard(){super(5);}
+
+    /**
+     * Accessor method of {@code NumberFiveCard} Class.<br>
+     * <b>Post-Condition:</b> Returns a path to the image of the front of the card.
+     * @class NumberFiveCard
+     */
     public String getCard() {return card;}
+
+    //Add details about how this movePawn should work according to the instructions of the game
     @Override
     public void movePawn(Pawn p, Board b) {}
 }
